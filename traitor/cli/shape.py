@@ -16,7 +16,7 @@ from cloup import (
 
 @command(
     "shape",
-    help="Calculate shape clusters.",
+    help="<EXPERIMENTAL> Calculate shape clusters.",
     no_args_is_help=True,
 )
 @option_group(

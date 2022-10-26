@@ -145,7 +145,7 @@ def single_wrapped(args):
 
 @command(
     "align",
-    help="Align contours and extract rotated contours for multiple images.",
+    help="Align contours and extract rotated contours from images.",
     no_args_is_help=True,
 )
 @option_group(
@@ -176,7 +176,7 @@ def single_wrapped(args):
             path_type=Path,
         ),
         help="""
-            Input mask directory or detection output directory. Mask files must
+            Input mask directory or extraction output directory. Mask files must
             be PNG files named <IMAGE_NAME>_mask.png; i.e., for an image file
             "image_1.jpg" the corresponding mask must be named "image_1_mask.png".
         """,

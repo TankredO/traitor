@@ -155,7 +155,7 @@ def single_wrapped(args):
 
 @command(
     "extract",
-    help="Detect seeds and extract their contours/masks from images.",
+    help="Detect objects and extract their contours/masks from images.",
     no_args_is_help=True,
 )
 @option_group(
@@ -171,7 +171,7 @@ def single_wrapped(args):
             resolve_path=True,
             path_type=Path,
         ),
-        help="Directory containing images.",
+        help="Directory containing images in PNG format.",
         required=True,
     ),
     option(
@@ -181,9 +181,8 @@ def single_wrapped(args):
             file_okay=False, dir_okay=True, resolve_path=True, path_type=Path
         ),
         help=f"""
-            Output directory. Will be created if it does not exist. By default
-            a directory with the name "<IMAGE_DIR>_detections" will be created in
-            the current working directory ({Path(".").resolve()}).
+            A directory with the specified name will be created if it does not exist.
+            By default the directory will be created in the current working directory ({Path(".").resolve()}).
         """,
         default=None,
         required=True,
@@ -219,7 +218,9 @@ def single_wrapped(args):
         "-u",
         "--contour_output",
         is_flag=True,
-        help="Generate additional output image with contours.",
+        help="""
+            Generate additional output image with contours to easily
+            check the quality of image segmentation.""",
     ),
     option(
         "-p",

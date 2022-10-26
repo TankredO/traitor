@@ -3,7 +3,11 @@ from cloup import group, version_option, help_option
 from .. import __version__
 
 
-@group("traitor", help="A tool for measuring seed traits.", no_args_is_help=True)
+@group(
+    "traitor",
+    help="A tool to extract morphological traits from images",
+    no_args_is_help=True,
+)
 @help_option("-h", "--help")
 @version_option(__version__, "-v", "--version")
 def cli():

@@ -83,7 +83,7 @@ def run_single(
     chull_perimeter = chull_props.perimeter
     chull_area = chull_props.area
 
-    diaspore_surface_structure = chull_perimeter / perimeter
+    surface_structure = chull_perimeter / perimeter
     solidity = area / chull_area
 
     circularity = 4 * np.pi * area / np.power(perimeter, 2)
@@ -118,7 +118,7 @@ def run_single(
         depth += 1
 
     cl_rgb = median_cut(image=image[:, :, [2, 1, 0]], mask=mask, depth=depth)
-    colors_rgb, counts_rgb = dominant_colors_mc(image, cl_rgb)
+    colors_rgb, counts_rgb = dominant_colors_mc(image[2, 1, 0], cl_rgb)
     colors_rgb = np.round(colors_rgb, 0).astype(np.uint8)
     frac_rgb = counts_rgb / counts_rgb.sum()
     colors_rgb_dict = build_pc_dict(colors_rgb, frac_rgb, "rgb", ("r", "g", "b"))
@@ -170,7 +170,7 @@ def run_single(
             aspect_ratio=aspect_ratio,
             area=area,
             perimeter=perimeter,
-            diaspore_surface_structure=diaspore_surface_structure,
+            surface_structure=surface_structure,
             solidity=solidity,
             circularity=circularity,
             **rgb_median_dict,
@@ -245,8 +245,8 @@ def single_wrapped(args):
         "-n",
         "--n_colors",
         type=int,
-        default=5,
-        help="Number of dominant colors to extract.",
+        default=4,
+        help="Number of dominant colors to extract. The specified value should be power of two.",
         show_default=True,
     ),
 )
