@@ -118,7 +118,7 @@ def run_single(
         depth += 1
 
     cl_rgb = median_cut(image=image[:, :, [2, 1, 0]], mask=mask, depth=depth)
-    colors_rgb, counts_rgb = dominant_colors_mc(image[:,:,2, 1, 0], cl_rgb)
+    colors_rgb, counts_rgb = dominant_colors_mc(image[:,:, [2, 1, 0]], cl_rgb)
     colors_rgb = np.round(colors_rgb, 0).astype(np.uint8)
     frac_rgb = counts_rgb / counts_rgb.sum()
     colors_rgb_dict = build_pc_dict(colors_rgb, frac_rgb, "rgb", ("r", "g", "b"))
