@@ -1,6 +1,6 @@
 # traitor
 
-A tool for extracting seed traits from digital images.
+A tool to extract morphological traits from images.
 
 ## Installation
 
