@@ -18,9 +18,12 @@ All installation steps and commands should be executed in a command-line interfa
 
 - Anaconda Prompt (Windows) – This is installed with Miniconda.
 - Terminal (Mac)
-  Traitor installation via pip
-  The recommended way to install Traitor is via pip, which enables Traitor to be installed directly from a git repository. Once Conda is installed run the following command in your CLI to install pip:
-  conda install git pip
+
+### Traitor installation via pip
+The recommended way to install Traitor is via pip, which enables Traitor to be installed directly from a git repository. Once Conda is installed run the following command in your CLI to install pip:
+```bash
+conda install git pip
+```
 
 Run the following command in your CLI to install Traitor:
 
