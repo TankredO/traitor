@@ -34,7 +34,11 @@ Test your installation:
 traitor -h
 ```
 
-## Functionality Overview
+## Functionality
+
+### Overview
+
+![Overview](./images/overview.png)
 
 All Traitor’s functionality can be accessed using the Traitor commandline application in your CLI. Trator is able to process multiple images simultaneously and measures all traits with only three commands: `extract`, `align`, and `measure`.
 
