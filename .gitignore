@@ -131,3 +131,9 @@ dmypy.json
 # MAC
 .DS_Store
 ._*
+
+traitor_test
+traitor_test_extracted
+traitor_test_aligned
+traitor_test_measurements.csv
+sample_images.zip
