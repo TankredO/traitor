@@ -20,7 +20,9 @@ All installation steps and commands should be executed in a command-line interfa
 - Terminal (Mac)
 
 ### Traitor installation via pip
+
 The recommended way to install Traitor is via pip, which enables Traitor to be installed directly from a git repository. Once Conda is installed run the following command in your CLI to install pip:
+
 ```bash
 conda install git pip
 ```
@@ -204,3 +206,78 @@ c) Specify output of 8 dominant colours:
 ```bash
 traitor measure -i "images_aligned" -n 8
 ```
+
+## Example analysis
+
+In the following, we will explore how Traitor can be applied to automatically extract traits from biological objects.
+
+### 1. Download the data:
+
+The test image dataset (containing four images) is available as ‘sample_images.zip’ at https://doi.org/10.6084/m9.figshare.21206507.
+
+#### Download and unzip from the CLI:
+
+Windows:
+
+```powershell
+wget https://figshare.com/ndownloader/files/38302869 -O "sample_images.zip"
+mkdir traitor_test
+Expand-Archive -Path "sample_images.zip" -DestinationPath "traitor_test"
+```
+
+Mac:
+
+```bash
+wget https://figshare.com/ndownloader/files/38302869 -O "sample_images.zip"
+mkdir traitor_test
+unzip sample_images.zip -d "traitor_test"
+```
+
+### 2. Extract contours
+
+Extract contours, creating a mask (for align command), contour output to assess the quality of image segmentation, and bounding boxes for every object detected object:
+
+```bash
+traitor extract -i "traitor_test" -o "traitor_test_extracted" -u -b
+```
+
+The output will look similar to this (image was rotated to improve visualisation):
+
+- **Mask**: ![Mask](./images/mask.png)
+- **Contour output**: ![Contours](./images/contours.jpg)
+  - Detail of **contour output** showing yellow outline around objects: ![Contours](./images/contours_detail.jpg)
+- **Bounding boxes** placed in a subdirectory (only 4 are shown here):<br>
+  ![Bounding Box 1](./images/bb1.png)
+  ![Bounding Box 2](./images/bb2.png)
+  ![Bounding Box 3](./images/bb3.jpg)
+  ![Bounding Box 4](./images/bb4.jpg)
+
+### 3. Align contours
+
+Align contours and extract rotated contours from images
+
+```bash
+traitor align -i "traitor_test" -m "traitor_test_extracted" -o "traitor_test_aligned"
+```
+
+The output will be placed in 3 folders:
+
+- **Contours**: CSV file with contour coordinates
+- **Extractions**: rotated images (only 4 are shown here)<br>
+  ![Extraction 1](./images/ex1.jpg)
+  ![Extraction 2](./images/ex2.jpg)
+  ![Extraction 3](./images/ex3.jpg)
+  ![Extraction 4](./images/ex4.jpg)
+- **Masks**: rotated masks (only 4 are shown here)<br>
+  ![Mask 1](./images/m1.png)
+  ![Mask 2](./images/m2.png)
+  ![Mask 3](./images/m3.png)
+  ![Mask 4](./images/m4.png)
+
+### 4. Extracts measurements
+
+```bash
+traitor measure -i "traitor_test_aligned" -o "traitor_test_measurements.csv"
+```
+
+This will write a CSV file with all extracted measurements to `traitor_test_measurements.csv`.
