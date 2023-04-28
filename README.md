@@ -1,3 +1,6 @@
+[![DOI](https://zenodo.org/badge/538830664.svg)](https://zenodo.org/badge/latestdoi/538830664)
+
+
 # traitor
 
 A tool to extract morphological traits from images.
