@@ -20,7 +20,6 @@ def run_single(
     import numpy as np
 
     with warnings.catch_warnings(record=True) as w:
-
         image_name = image_file.with_suffix("").name
 
         # prepare output files
@@ -69,7 +68,7 @@ def run_single(
             DEFAULT_HIGH_N_CONTOURS,
         )
 
-        image = skimage.io.imread(image_file)
+        image = skimage.io.imread(image_file)[:, :, :3]  # ignore alpha channel
 
         if adaptive:
             bin_image = segment_image_adaptive(image, bg_col=bg_col, scale=None)
