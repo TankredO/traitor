@@ -5,6 +5,9 @@
 
 A tool to extract morphological traits from images.
 
+## Publication
+Traitor is published in Methods in Ecology and Evolution: [Automated extraction of seed morphological traits from images](https://doi.org/10.1111/2041-210X.14127)
+
 ## Installation
 
 ### Requirements
